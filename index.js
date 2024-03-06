@@ -10,6 +10,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+//CONNEXION mongoDB
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
 app.listen(process.env.PORT, () => {
-    console.log("Server is running on port 3000 !");
+    console.log("Server is running!");
   });
