@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import userRoutes from './routes/user.js';
 
 //Configuration
 dotenv.config();
@@ -23,3 +24,6 @@ mongoose
 app.listen(process.env.PORT, () => {
     console.log("Server is running!");
   });
+
+  //test API
+  app.use('/user', userRoutes);
