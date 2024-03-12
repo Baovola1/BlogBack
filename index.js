@@ -29,3 +29,14 @@ app.listen(process.env.PORT, () => {
   
   app.use('/user', userRoutes);
   app.use('/auth', authRoutes);
+
+  //create a middelware
+  app.use((err, req, res, next)=>{
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
+    res.status(statusCode).json({
+      success:false,
+      statusCode,
+      message
+    })
+  })
